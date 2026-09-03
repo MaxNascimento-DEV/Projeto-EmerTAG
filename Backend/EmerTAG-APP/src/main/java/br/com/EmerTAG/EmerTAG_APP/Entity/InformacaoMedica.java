@@ -57,7 +57,7 @@ public class InformacaoMedica {
     @Column(name = "data_cadastro", nullable = false, updatable = false)
     private LocalDate dataCadastro;
 
-     @Column(name = "data_atualizacao")
+    @Column(name = "data_atualizacao")
     private LocalDateTime dataAtualizacao;
 
     @PrePersist
