@@ -51,7 +51,7 @@ public class InformacaoMedica {
     @Column(name = "condicao_biosseguranca", length = 50)
     private CondicaoBiosseguranca condicaoBiosseguranca;
 
-    @Column(length = 255, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String descricaoInformacaoAdicional;
 
     @Column(name = "data_cadastro", nullable = false, updatable = false)
