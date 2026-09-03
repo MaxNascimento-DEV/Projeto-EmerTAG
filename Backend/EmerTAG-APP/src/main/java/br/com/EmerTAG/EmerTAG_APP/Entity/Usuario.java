@@ -1,6 +1,8 @@
 package br.com.EmerTAG.EmerTAG_APP.Entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+
 import br.com.EmerTAG.EmerTAG_APP.Enums.TipoUsuario;
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,6 +41,10 @@ public class Usuario {
 
     @Column(name = "data_cadastro", nullable = false, updatable = false)
     private LocalDate dataCadastro;
+
+     @OneToMany(mappedBy = "usuarioCriador", fetch = FetchType.LAZY)
+    @Builder.Default
+    private List<PessoaProtegida> pessoasProtegidas = new ArrayList<>();
 
     @PrePersist
     protected void prePersist(){
