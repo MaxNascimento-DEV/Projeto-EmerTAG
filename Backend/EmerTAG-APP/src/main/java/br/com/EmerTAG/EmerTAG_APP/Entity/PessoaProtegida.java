@@ -1,6 +1,10 @@
 package br.com.EmerTAG.EmerTAG_APP.Entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,6 +12,7 @@ import lombok.*;
 @Table(name = "pessoa_protegida")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -34,12 +39,24 @@ public class PessoaProtegida {
     @Column(columnDefinition = "TEXT") 
     private String observacoes;
 
+    @OneToMany(mappedBy = "pessoaProtegida", fetch = FetchType.LAZY)
+    @Builder.Default
+    private List<ContatoEmergencia> contatosEmergencia = new ArrayList<>();
+
     @Column(name = "data_cadastro", nullable = false)
-    private LocalDate dataCadastado;
+    private LocalDate dataCadastro;
+
+     @Column(name = "data_atualizacao")
+    private LocalDateTime dataAtualizacao;
 
     @PrePersist
     protected void prePersist() {
-        this.dataCadastado = LocalDate.now();
+        this.dataCadastro = LocalDate.now();
+        this.dataAtualizacao = LocalDateTime.now();
     }    
     
+    @PreUpdate
+    protected void preUpdate() {
+        this.dataAtualizacao = LocalDateTime.now();
+    }
 }
