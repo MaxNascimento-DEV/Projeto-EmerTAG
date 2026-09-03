@@ -41,7 +41,7 @@ public class Usuario {
     private LocalDate dataCadastro;
 
     @PrePersist
-    protected void onCreate(){
+    protected void prePersist(){
         this.dataCadastro = LocalDate.now(); 
     }
 

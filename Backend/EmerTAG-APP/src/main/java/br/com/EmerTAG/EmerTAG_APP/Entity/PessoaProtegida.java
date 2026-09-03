@@ -1,7 +1,6 @@
 package br.com.EmerTAG.EmerTAG_APP.Entity;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,5 +33,13 @@ public class PessoaProtegida {
 
     @Column(columnDefinition = "TEXT") 
     private String observacoes;
+
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDate dataCadastado;
+
+    @PrePersist
+    protected void prePersist() {
+        this.dataCadastado = LocalDate.now();
+    }    
     
 }
