@@ -31,6 +31,7 @@ public class QrCode {
     @Column(name = "data_gerada", nullable = false, updatable = false)
     private LocalDateTime dataGerada;
     
+    @Column(nullable = false)
     private boolean ativo;
 
     @PrePersist
