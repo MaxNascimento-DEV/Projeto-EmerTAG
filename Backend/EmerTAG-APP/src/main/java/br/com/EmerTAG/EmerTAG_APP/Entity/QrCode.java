@@ -2,7 +2,7 @@ package br.com.EmerTAG.EmerTAG_APP.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
- import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
  @Entity
  @Table(name= "qr_code")
